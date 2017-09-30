@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head_title %}result of votes{% endblock %}
+
+{% block content %}
+<h1>{{ poll.question }}</h1>
+
+{% for choice in poll.choice_set.all %}
+    <p>"{{ choice.choice_text }}" get totall {{ choice.vote }} vote{{ choice.vote|pluralize }}</p>
+{% endfor %}
+<a href="{% url 'poll:detail' poll.id %}"><strong><i>Vote Again?</i></strong></a>
+    <br>
+    <br>
+<a href="{% url 'poll:index' %}"><strong><i>Back to index page?</i></strong></a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Poll detail{% endblock %}
+
+{% block content %}
+<h1>{{ poll.question }}</h1>
+
+<!--if anytime poll will not exist then this error_message will be show-->
+{% if error_message %}
+    {{ error_message }}
+{% endif %}
+
+<!--
+If the choice of any poll is available, then this if block will be executed.
+Otherwise the else block will be executed.
+-->
+{% if poll.choice_set.all %}
+
+    <form action="{% url 'poll:vote' poll.id %}" method="post" class="formstyle">
+        {% csrf_token %}
+        {% for choice in poll.choice_set.all %}
+            <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">
+                {{ choice.choice_text }}
+            </label><br>
+        {% endfor %}
+        <input type="text">
+        <div class="bottom">
+            <input type="radio">
+        </div>
+        <input type="submit" value="Vote"/>
+    </form>
+
+{% else %}
+    <p>There is no choice</p>
+{% endif %}
+
+
+<a href="{% url 'poll:index' %}"><i><strong>Back to home</strong></i></a>
+{% endblock %}
+
