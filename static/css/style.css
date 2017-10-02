@@ -2,15 +2,3 @@ body{
     background: white url("../img/background.png");
 }
 
-
-.bottom{
- background-color: aqua;
-    border-width: 2px;
-    border-color: white;
-    border-radius: 5%;
-    margin: 0 auto;
-}
-
-.formstyle{
-    background-color: green;
-}

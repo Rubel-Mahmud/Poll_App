@@ -1,10 +1,11 @@
-{% load staticfiles %}
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
-    <title>{% block head_title %}Poll_app{% endblock %}</title>
-    {% include 'head.html' %}
+    <title>{% block title %}Poll_app{% endblock %}</title>
+
+    {% include 'poll/head.html' %}
 
 </head>
 <body>
@@ -12,7 +13,7 @@
     {% block content %}
     {% endblock %}
 
-    {% include 'footer_js.html' %}
+    {% include 'poll/footer_js.html' %}
 
 </body>
 </html>

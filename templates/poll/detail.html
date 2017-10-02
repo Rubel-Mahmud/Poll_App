@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block head_title %}Poll detail{% endblock %}
+{% block title %}Poll detail{% endblock %}
 
 {% block content %}
 <h1>{{ poll.question }}</h1>
@@ -24,10 +24,6 @@ Otherwise the else block will be executed.
                 {{ choice.choice_text }}
             </label><br>
         {% endfor %}
-        <input type="text">
-        <div class="bottom">
-            <input type="radio">
-        </div>
         <input type="submit" value="Vote"/>
     </form>
 
