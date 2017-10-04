@@ -2,21 +2,42 @@
 
 {% block title %}Latest_poll_list{% endblock %}
 
-{% load staticfiles %}
-
-{% include 'head.html' %}
-
 {% block content %}
+
 <h1>Here all of my Poll :</h1>
-{% if latest_poll_list %}
-    <ul>
-        {% for poll in latest_poll_list %}
-            <li>
-                <a href="{% url 'poll:detail' poll.id %}">{{ poll.question }}</a><br>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No poll is available</p>
-{% endif %}
-{% endblock %}
+    {% if latest_poll_list %}
+        <ul>
+            {% for poll in latest_poll_list %}
+                <li>
+                    <strong><a href="{% url 'poll:detail' poll.id %}">{{ poll.question }}</a></strong>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No poll is available</p>
+    {% endif %}
+
+{% endblock content %}
+
+
+
+{% block drop_poll_list %}
+    <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Polls</a>
+
+        {% if latest_poll_list %}
+            <ul class="nav-dropdown-items">
+                {% for poll in latest_poll_list %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_top"><i class="icon-star"></i>{{ poll.pub_date }}</a><br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </li>
+{% endblock drop_poll_list %}
+
+
+
+
