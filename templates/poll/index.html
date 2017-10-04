@@ -2,6 +2,10 @@
 
 {% block title %}Latest_poll_list{% endblock %}
 
+{% load staticfiles %}
+
+{% include 'head.html' %}
+
 {% block content %}
 <h1>Here all of my Poll :</h1>
 {% if latest_poll_list %}
